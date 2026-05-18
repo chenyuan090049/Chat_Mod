@@ -1,7 +1,8 @@
-# Chill AI Mod
+# Chill AI Chat Mod
 
 **为《Chill with You: Lo-Fi Story》添加基于 LLM 的 AI 文字陪伴对话（BepInEx 插件），让 Satone 支持长期记忆、主动搭话、现实时间上下文与熟悉度变化。**
-
+本项目基于 GitHub 开源项目 qzrs777/AIChat 进行深度重构与二次开发。
+特别感谢原作者为《Chill with You Lo-Fi Story》提供的 BepInEx 插件基础框架以及灵感。本版本移除了原有的 TTS/ASR 语音与本地模型复杂依赖，专注于“纯文本交互、沉浸式 UI、极简单文件架构、内存级 RAG 记忆检索与主动搭话”等特性的深度打磨。
 ## 特色
 
 - 使用兼容 OpenAI Chat Completions 格式的 LLM API 生成对话文本。
@@ -17,7 +18,29 @@
 - Unity 桥接层带安全检查，便于后续扩展角色动作、视线与表情联动。
 
 ## 安装说明
+### 安装 Mod 本体
+1. 下载 Mod
+   - 从 [Releases](https://github.com/qzrs777/AIChat/releases) 下载 `AIChatMod.zip` 并解压。
+     - 推荐使用带版本号的[最新稳定版](https://github.com/qzrs777/AIChat/releases/latest)；[![Build Status](https://github.com/qzrs777/AIChat/actions/workflows/build-stable.yml/badge.svg)](https://github.com/qzrs777/AIChat/actions/workflows/build-stable.yml)
+     - 或者使用由 GitHub Actions 在线构建的[最新预览版](https://github.com/qzrs777/AIChat/releases/tag/preview)。[![Build Status](https://github.com/qzrs777/AIChat/actions/workflows/build-preview.yml/badge.svg)](https://github.com/qzrs777/AIChat/actions/workflows/build-preview.yml)
+     - 预览版比稳定版更新，相对来说有 bug 的概率会更高一些，而实际结果也可能反过来。
 
+2. 安装 BepInEx 前置
+   - 在 Steam 右键游戏 -> 管理 -> 浏览本地文件（或直接定位游戏根目录）。
+   - 将压缩包内的 `BepInEx_*` 下的内容复制到游戏根目录。
+     - Linux 用户请注意：Mod 能被加载的原理是，Windows 中的一些程序在启动时，同目录下的 DLL 文件（这里的是 `winhttp.dll`）比原本的 DLL 文件具有更高的优先级，从而被加载；但是在 Linux 下，Proton 自己的 DLL 文件具有更高的优先级，会无视同目录下的 `winhttp.dll`。所以，你需要在 Steam 的此游戏的设置里，将启动选项填写为 `WINEDLLOVERRIDES="winhttp=n,b" %command%` （其中 `winhttp` 就是 `winhttp.dll` 的文件名）。
+   - 运行一次游戏。
+     - 这一步用于生成插件目录结构，包括 `BepInEx` 目录下的 `config`、`core`、`patchers`、`plugins` 等目录。
+3. 安装 Mod
+   - **请务必确保上一步已生成目录结构。否则，说明 BepInEx 前置未正确加载（在解决此问题之前，继续下一步是无意义的）。**
+   - 将 `AIChat.dll` 放入 `BepInEx` 下的 `plugins` 目录中。
+   - 打开游戏，按 F9 键或 F10 键调出 Mod 的界面。
+   - 在 LLM 配置中，填写 API URL 与 API Key 以及模型名称并保存，此时就可以在“与聪音对话”的文本框里进行对话了（仅文字；下一节将配置语音）。
+     - API URL 示例：
+       - OpenRouter：`https://openrouter.ai/api/v1/chat/completions`
+       - Ollama：`http://127.0.0.1:11434/v1/chat/completions`
+       - Gemini：`https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`
+   - 注意：聊天内容会发送到你配置的 API，请留心 API Key 与隐私策略。
 ### 安装 BepInEx 前置
 
 1. 在 Steam 中右键游戏 -> 管理 -> 浏览本地文件，进入游戏根目录。
