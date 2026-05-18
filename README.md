@@ -6,8 +6,7 @@
 
 
 ## 特色
-- 使用兼容 OpenAI Chat Completions 格式的 LLM API 生成对话文本。
-- 支持 DeepSeek、OpenRouter、Ollama、Gemini OpenAI 兼容接口等服务。
+- 接入 DeepSeek API。
 - UI 内可调节音量、窗口尺寸、保存配置，支持拖拽调整大小与精确数值输入。
 - 支持长期记忆：
   - 可读聊天日志：`ChatHistory/*.txt`
@@ -32,12 +31,7 @@
 - **请务必确保上一步已生成目录结构。否则，说明 BepInEx 前置未正确加载（在解决此问题之前，继续下一步是无意义的）。**
 - 将 `AIChat.dll` 放入 `BepInEx/plugins` 目录中。
 - 打开游戏，按 F9 键或 F10 键调出 Mod 的界面。
-- 在 LLM 配置中，填写 API URL 与 API Key 以及模型名称并保存，此时就可以在的文本框里进行对话了。
-  - API URL 示例：
-    - DeepSeek：`https://api.deepseek.com/chat/completions` （本项目采取的方案）
-    - OpenRouter：`https://openrouter.ai/api/v1/chat/completions`
-    - Ollama：`http://127.0.0.1:11434/v1/chat/completions`
-    - Gemini：`https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`
+- 在 LLM 配置中，填写 API URL 与 API Key 以及模型名称并保存，此时就可以在的文本框里进行对话了（后面有怎么填）。
 - 注意：聊天内容会发送到你配置的 API，请留心 API Key 与隐私策略。
 
 
@@ -51,9 +45,9 @@
 
 ### LLM 配置
 在 `API 配置 (DeepSeek)` 中设置：
-- `API URL`：兼容 Chat Completions 的接口地址。
+- `API URL`：`https://api.deepseek.com/chat/completions` 。
 - `API Key`：你的 API 密钥。
-- `模型名称`：例如 `deepseek-chat`、`gpt-4o-mini`、`qwen2.5` 等，取决于你使用的服务。
+- `模型名称`：`deepseek-chat`。
 
 ### 界面与交互
 在 `界面与交互设置` 中可以设置：
@@ -146,7 +140,6 @@ ChatHistory/*.txt       可读聊天日志
 - 检查 API URL 是否正确。
 - 检查 API Key 是否有效。
 - 检查模型名称是否被该服务支持。
-- 如果使用本地 Ollama，确认服务已经启动。
 - 如果出现 401，通常是 API Key 错误。
 - 如果出现 429，通常是频率限制或额度不足。
 
