@@ -127,8 +127,8 @@ ChatHistory/*.txt       可读聊天日志
 - 在终端中输入以下命令并回车：```dotnet build -c Release```。
 - 查看编译结果：命令行会输出编译过程。如果最后显示绿色的`已成功生成`或`Build succeeded`，并显示 0 个警告，0 个错误，这就说明编译成功了。
 - 提取并部署 DLL：
-  - 编译成功后，根据你 .csproj 里的配置，输出文件会自动保存在 ```AIChat-main\AIChat\bin\Release\net472```，在这个文件夹里找到 AIChat.dll。
-  - 把这个 AIChat.dll 复制到游戏的 BepInEx\plugins\ 文件夹下。
+  - 编译成功后，根据你 .csproj 里的配置，输出文件会自动保存在 ```AIChat-main\AIChat\bin\Release\net472```，在这个文件夹里找到 ```AIChat.dll```。
+  - 把这个 ```AIChat.dll ```复制到游戏的 ```BepInEx\plugins\ ```文件夹下。
   - 启动游戏即可生效。
 
 
@@ -165,6 +165,7 @@ ChatHistory/*.txt       可读聊天日志
 - 当前版本主要支持文字聊天，不包含 TTS 语音朗读和 ASR 语音输入。
 - 长期记忆目前是关键词召回，不是向量检索。
 - Unity 角色动作桥接已经做了安全封装，但主聊天流程尚未接入完整情绪/动作联动。
+
 
 ## 声明
 本项目使用或依赖以下项目：
