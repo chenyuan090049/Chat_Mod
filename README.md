@@ -35,9 +35,9 @@
 - **请务必确保上一步已生成目录结构。否则，说明 BepInEx 前置未正确加载（在解决此问题之前，继续下一步是无意义的）。**
 - 将 `AIChat.dll` 放入 `BepInEx` 下的 `plugins` 目录中。
 - 打开游戏，按 F9 键或 F10 键调出 Mod 的界面。
-- 在 LLM 配置中，填写 API URL 与 API Key 以及模型名称并保存，此时就可以在“与聪音对话”的文本框里进行对话了（仅文字；下一节将配置语音）。
+- 在 LLM 配置中，填写 API URL 与 API Key 以及模型名称并保存，此时就可以在的文本框里进行对话了。
   - API URL 示例：
-    - DeepSeek：`https://api.deepseek.com/chat/completions`
+    - DeepSeek：`https://api.deepseek.com/chat/completions` （本项目采取的方案）
     - OpenRouter：`https://openrouter.ai/api/v1/chat/completions`
     - Ollama：`http://127.0.0.1:11434/v1/chat/completions`
     - Gemini：`https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`
@@ -111,61 +111,37 @@ ChatHistory/*.txt       可读聊天日志
 - 是否更自然地提到旧记忆
 - 主动搭话频率
 
-关系阶段包括：```初识 -> 熟悉 -> 亲近 -> 信任```
-你可以在游戏内填写 `称呼偏好`，让 Satone 更自然地称呼你。
+关系阶段包括：```初识 -> 熟悉 -> 亲近 -> 信任```，你可以在游戏内填写 `称呼偏好`，让 Satone 更自然地称呼你。
 
 ## 构建
-
 ### 本地构建
-
 需要：
-
 - .NET SDK
 - 游戏本体中的 Unity 依赖
 - BepInEx core 依赖
 
 项目文件中默认依赖路径为：
-
 ```xml
 <UnityDepsPath>F:\Steam\steamapps\common\Chill with You Lo-Fi Story\Chill With You_Data\Managed</UnityDepsPath>
 <BepInExPath>F:\Steam\steamapps\common\Chill with You Lo-Fi Story\BepInEx\core</BepInExPath>
 ```
-
 如果你的游戏安装位置不同，请先修改 [AIChat.csproj](AIChat/AIChat.csproj) 中的路径。
 
-构建 Release：
+构建 Release：```dotnet build .\AIChat.sln -c Release```。
+构建产物：```AIChat/bin/Release/net472/AIChat.dll```，将该 DLL 复制到：游戏目录```/BepInEx/plugins/```。
 
-```powershell
-dotnet build .\AIChat.sln -c Release
-```
-
-构建产物：
-
-```text
-AIChat/bin/Release/net472/AIChat.dll
-```
-
-将该 DLL 复制到：
-
-```text
-游戏目录/BepInEx/plugins/
-```
 
 ## 问题排查
-
 ### Mod 没有显示
-
 - 确认 BepInEx 已正确安装。
 - 确认 `AIChat.dll` 位于 `BepInEx/plugins`。
 - 查看 `BepInEx/LogOutput.log`。
 - 进入游戏后尝试按 `F9` 或 `F10`。
 
 ### 找不到 plugins 文件夹
-
 先运行一次游戏。BepInEx 正确加载后会自动生成目录结构。
 
 ### API 报错
-
 - 检查 API URL 是否正确。
 - 检查 API Key 是否有效。
 - 检查模型名称是否被该服务支持。
@@ -174,36 +150,23 @@ AIChat/bin/Release/net472/AIChat.dll
 - 如果出现 429，通常是频率限制或额度不足。
 
 ### AI 不记得旧聊天
-
 - 确认 `使用长期记忆参与回复` 已开启。
 - 确认 `Memory.jsonl` 中有对应内容。
 - 修改记忆文件后，点击 `重载长期历史缓存` 或重启游戏。
 - 如果 `MaxMemoryResults` 设置为 0，则不会召回历史片段。
 
 ### 想重置配置
+- 删除配置文件后重启游戏：```BepInEx/config/com.username.chillaimod.cfg```。
+- 如果想清空长期记忆，可备份后删除：```BepInEx/config/ChillAIMod/```。
 
-删除配置文件后重启游戏：
-
-```text
-BepInEx/config/com.username.chillaimod.cfg
-```
-
-如果想清空长期记忆，可备份后删除：
-
-```text
-BepInEx/config/ChillAIMod/
-```
 
 ## 当前限制
-
 - 当前版本主要支持文字聊天，不包含 TTS 语音朗读和 ASR 语音输入。
 - 长期记忆目前是关键词召回，不是向量检索。
 - Unity 角色动作桥接已经做了安全封装，但主聊天流程尚未接入完整情绪/动作联动。
 
 ## 声明
-
 本项目使用或依赖以下项目：
-
 - [BepInEx](https://github.com/BepInEx/BepInEx)：Unity/XNA 游戏 Mod 框架。
 - [Harmony](https://github.com/pardeike/Harmony)：运行时补丁工具。
 - Unity Engine：游戏引擎库，仅用于构建与运行时引用。
