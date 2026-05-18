@@ -97,9 +97,10 @@ ChatHistory/*.txt       可读聊天日志
 - `ChatHistory/*.txt` 主要用于人类查看。
 - `Memory.jsonl` 是长期记忆召回的主要来源。
 - 如果想让 AI 不再记得某句话，优先修改 `Memory.jsonl`。
+   - Memory.jsonl` 中每一行是一条记忆，类似：```json{"Id":"...","Timestamp":"2026-05-18 21:10:00","Role":"User","Content":"某句话","Tags":"","Importance":2,"Enabled":true,"Pinned":false}```
 - 修改后可在游戏内点击 `重载长期历史缓存`，或者重启游戏。
 
-`Memory.jsonl` 中每一行是一条记忆，类似：```json{"Id":"...","Timestamp":"2026-05-18 21:10:00","Role":"User","Content":"某句话","Tags":"","Importance":2,"Enabled":true,"Pinned":false}```
+
 可以删除整行，或者把：```json"Enabled":true```，改成：```json"Enabled":false```。
 
 
