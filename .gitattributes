@@ -1,0 +1,19 @@
+# Auto-detect text files and normalize line endings.
+* text=auto
+
+# Keep common source and project files as text.
+*.cs text
+*.csproj text
+*.sln text eol=crlf
+*.md text
+*.json text
+*.jsonl text
+*.txt text
+*.cfg text
+
+# Treat binary assets and assemblies as binary.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.dll binary
+*.pdb binary

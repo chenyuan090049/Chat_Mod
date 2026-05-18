@@ -1,0 +1,48 @@
+# =====================================================
+# .NET / C# build outputs
+# =====================================================
+[Bb]in/
+[Oo]bj/
+*.pdb
+*.mdb
+*.cache
+*.tmp
+
+# =====================================================
+# Visual Studio / Rider / editor local state
+# =====================================================
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.swp
+
+# =====================================================
+# Game and mod dependency assemblies
+# Keep external Unity/BepInEx/game DLLs out of git.
+# =====================================================
+*.dll
+
+# =====================================================
+# BepInEx runtime config, logs, and local memory
+# These may contain API keys, private chat history, or local machine paths.
+# =====================================================
+*.cfg
+*.log
+BepInEx/
+config/
+Logs/
+ChillAIMod/
+Summary.txt
+Memory.jsonl
+ChatHistory/
+
+# =====================================================
+# Local release/package scratch folders
+# =====================================================
+dist/
+release/
+packages/
