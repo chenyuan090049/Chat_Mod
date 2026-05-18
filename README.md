@@ -1,15 +1,13 @@
 # Chill_Mod
 
-**为《Chill with You: Lo-Fi Story》添加基于 LLM 的 AI 文字陪伴对话（BepInEx 插件），让 Satone 支持长期记忆、主动搭话、现实时间上下文与熟悉度变化。**
-
-本项目基于 GitHub 开源项目[ qzrs777/AIChat ](https://github.com/qzrs777/AIChat)进行重构与二次开发。
-本版本移除了原有的 TTS/ASR 语音与本地模型复杂依赖，专注于“纯文本交互、沉浸式 UI、极简单文件架构、内存级 RAG 记忆检索与主动搭话”等特性的深度打磨。
+**为《Chill with You: Lo-Fi Story》添加基于 LLM 的 AI 文字陪伴对话，让 Satone 支持长期记忆、主动搭话、现实时间上下文与熟悉度变化。**
+本项目基于 GitHub 开源项目[ qzrs777/AIChat ](https://github.com/qzrs777/AIChat)，移除了原有的 TTS/ASR 语音与本地模型复杂依赖，专注于纯文本交互。
+特别感谢原作者为《Chill with You Lo-Fi Story》提供的 BepInEx 插件基础框架以及灵感。
 
 ## 特色
-
 - 使用兼容 OpenAI Chat Completions 格式的 LLM API 生成对话文本。
 - 支持 DeepSeek、OpenRouter、Ollama、Gemini OpenAI 兼容接口等服务。
-- 游戏内聊天窗口可拖拽、缩放，并支持 F9/F10 快捷开关。
+- UI 内可调节音量、窗口尺寸、保存配置，支持拖拽调整大小与精确数值输入。
 - 支持长期记忆：
   - 可读聊天日志：`ChatHistory/*.txt`
   - 结构化长期记忆：`Memory.jsonl`
@@ -39,7 +37,7 @@
    - 打开游戏，按 F9 键或 F10 键调出 Mod 的界面。
    - 在 LLM 配置中，填写 API URL 与 API Key 以及模型名称并保存，此时就可以在“与聪音对话”的文本框里进行对话了（仅文字；下一节将配置语音）。
      - API URL 示例：
-       - DeepSeek:   https://api.deepseek.com/chat/completions
+       - DeepSeek：`https://api.deepseek.com/chat/completions`
        - OpenRouter：`https://openrouter.ai/api/v1/chat/completions`
        - Ollama：`http://127.0.0.1:11434/v1/chat/completions`
        - Gemini：`https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`
@@ -112,7 +110,7 @@ ChatHistory/*.txt       可读聊天日志
 - 是否更自然地提到旧记忆
 - 主动搭话频率
 
-关系阶段包括：```text 初识 -> 熟悉 -> 亲近 -> 信任```
+关系阶段包括：```初识 -> 熟悉 -> 亲近 -> 信任```
 你可以在游戏内填写 `称呼偏好`，让 Satone 更自然地称呼你。
 
 ## 构建
