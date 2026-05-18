@@ -48,51 +48,36 @@
 ## 使用与设置
 
 ### 游戏内界面
-
-- 打开/关闭 Mod 窗口：按 `F9` 或 `F10`。
-- 也可以点击游戏右侧的 AIChat 图标。
-- 右下角可以拖拽调整窗口大小，松开鼠标后会保存尺寸。
-- `保存设置` 会将配置写入 BepInEx 配置文件。
-
-配置文件位置：
-
-```text
-BepInEx/config/com.username.chillaimod.cfg
-```
+- 打开/关闭控制台（Mod 界面）：按 F9 或 F10（切换），或点击右边 AI 字样的按钮。
+- 拖拽右下角调整窗口大小；放开鼠标会把新尺寸保存到配置。
+- 点击“保存所有配置”，会把设置项保存到 BepInEx 的配置文件中。
+  - 位置：在游戏目录下的 `BepInEx/config/com.username.chillaimod.cfg`
+  - 关于各配置项的说明，参见其中的注释。
 
 ### LLM 配置
-
 在 `API 配置 (DeepSeek)` 中设置：
-
 - `API URL`：兼容 Chat Completions 的接口地址。
 - `API Key`：你的 API 密钥。
 - `模型名称`：例如 `deepseek-chat`、`gpt-4o-mini`、`qwen2.5` 等，取决于你使用的服务。
 
 ### 界面与交互
-
 在 `界面与交互设置` 中可以设置：
-
 - 窗口宽度
 - 窗口基础高度
 - 背景透明度
 - 是否反转 Enter 行为
 - 是否启用主动搭话
 - 主动搭话间隔
-
 主动搭话只会在聊天窗口打开、输入框为空、AI 未处理请求且已有聊天历史时触发。
 
 ### 人设及上下文
-
 在 `人设及上下文` 中可以设置：
-
 - `启用增强互动人设`
 - `接入现实时间`
 - `SystemPrompt`
-
 默认人设是 Satone（さとね）：一个热爱写诗、想象力丰富、温柔俏皮，并喜欢歌手许嵩的女孩。你可以直接在游戏内修改系统提示词。
 
 现实时间上下文会提供：
-
 - 当前日期与时间
 - 星期
 - 时段：凌晨、清晨、上午、中午、下午、傍晚、晚上、深夜
@@ -102,15 +87,8 @@ BepInEx/config/com.username.chillaimod.cfg
 - 本轮触发原因：玩家主动输入或系统主动搭话
 
 ### 长期记忆
-
-长期记忆相关文件位于：
-
-```text
-BepInEx/config/ChillAIMod/
-```
-
+长期记忆相关文件位于：`BepInEx/config/ChillAIMod/`
 主要文件：
-
 ```text
 Summary.txt             长期摘要
 Memory.jsonl            结构化长期记忆
@@ -118,46 +96,24 @@ ChatHistory/*.txt       可读聊天日志
 ```
 
 说明：
-
 - `ChatHistory/*.txt` 主要用于人类查看。
 - `Memory.jsonl` 是长期记忆召回的主要来源。
 - 如果想让 AI 不再记得某句话，优先修改 `Memory.jsonl`。
 - 修改后可在游戏内点击 `重载长期历史缓存`，或者重启游戏。
 
-`Memory.jsonl` 中每一行是一条记忆，类似：
+`Memory.jsonl` 中每一行是一条记忆，类似：```json{"Id":"...","Timestamp":"2026-05-18 21:10:00","Role":"User","Content":"某句话","Tags":"","Importance":2,"Enabled":true,"Pinned":false}```
+可以删除整行，或者把：```json"Enabled":true```，改成：```json"Enabled":false```。
 
-```json
-{"Id":"...","Timestamp":"2026-05-18 21:10:00","Role":"User","Content":"某句话","Tags":"","Importance":2,"Enabled":true,"Pinned":false}
-```
-
-可以删除整行，或者把：
-
-```json
-"Enabled":true
-```
-
-改成：
-
-```json
-"Enabled":false
-```
 
 ### 熟悉度系统
-
 熟悉度系统默认开启，但不会在对话里显示具体分数。它只影响：
-
 - Satone 的称呼方式
 - 语气亲近程度
 - 是否更自然地提到旧记忆
 - 主动搭话频率
 
-关系阶段包括：
-
-```text
-初识 -> 熟悉 -> 亲近 -> 信任
-```
-
-你也可以在游戏内填写 `称呼偏好`，让 Satone 更自然地称呼你。
+关系阶段包括：```text 初识 -> 熟悉 -> 亲近 -> 信任```
+你可以在游戏内填写 `称呼偏好`，让 Satone 更自然地称呼你。
 
 ## 构建
 
