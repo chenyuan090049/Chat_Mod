@@ -47,7 +47,7 @@
 ### LLM 配置
 在 `API 配置 (DeepSeek)` 中设置：
 - `API URL`：`https://api.deepseek.com/chat/completions` 。
-- `API Key`：你的 API 密钥。
+- `API Key`：你的 API 密钥。（小充10元，可以用很久）
 - `模型名称`：`deepseek-chat`。
 
 ### 界面与交互
