@@ -55,8 +55,8 @@
 ### LLM 配置
 在 `API 配置 (DeepSeek)` 中设置：
 - `API URL`：兼容 Chat Completions 的接口地址。
--`API Key`：你的 API 密钥。
--`模型名称`：例如 `deepseek-chat`、`gpt-4o-mini`、`qwen2.5` 等，取决于你使用的服务。
+- `API Key`：你的 API 密钥。
+- `模型名称`：例如 `deepseek-chat`、`gpt-4o-mini`、`qwen2.5` 等，取决于你使用的服务。
 
 ### 界面与交互
 在 `界面与交互设置` 中可以设置：
