@@ -20,10 +20,10 @@
 ## 安装说明
 ### 安装 Mod 本体
 1. 下载 Mod
-   - 从 [Releases](https://github.com/qzrs777/AIChat/releases) 下载 `AIChatMod.zip` 并解压。
-     - 推荐使用带版本号的[最新稳定版](https://github.com/qzrs777/AIChat/releases/latest)；[![Build Status](https://github.com/qzrs777/AIChat/actions/workflows/build-stable.yml/badge.svg)](https://github.com/qzrs777/AIChat/actions/workflows/build-stable.yml)
-     - 或者使用由 GitHub Actions 在线构建的[最新预览版](https://github.com/qzrs777/AIChat/releases/tag/preview)。[![Build Status](https://github.com/qzrs777/AIChat/actions/workflows/build-preview.yml/badge.svg)](https://github.com/qzrs777/AIChat/actions/workflows/build-preview.yml)
-     - 预览版比稳定版更新，相对来说有 bug 的概率会更高一些，而实际结果也可能反过来。
+- 从 [Releases](https://github.com/qzrs777/AIChat/releases) 下载 `AIChatMod.zip` 并解压。
+ - 推荐使用带版本号的[最新稳定版](https://github.com/qzrs777/AIChat/releases/latest)；[![Build Status](https://github.com/qzrs777/AIChat/actions/workflows/build-stable.yml/badge.svg)](https://github.com/qzrs777/AIChat/actions/workflows/build-stable.yml)
+ - 或者使用由 GitHub Actions 在线构建的[最新预览版](https://github.com/qzrs777/AIChat/releases/tag/preview)。[![Build Status](https://github.com/qzrs777/AIChat/actions/workflows/build-preview.yml/badge.svg)](https://github.com/qzrs777/AIChat/actions/workflows/build-preview.yml)
+ - 预览版比稳定版更新，相对来说有 bug 的概率会更高一些，而实际结果也可能反过来。
 
 2. 安装 BepInEx 前置
    - 在 Steam 右键游戏 -> 管理 -> 浏览本地文件（或直接定位游戏根目录）。
