@@ -37,45 +37,11 @@
    - 打开游戏，按 F9 键或 F10 键调出 Mod 的界面。
    - 在 LLM 配置中，填写 API URL 与 API Key 以及模型名称并保存，此时就可以在“与聪音对话”的文本框里进行对话了（仅文字；下一节将配置语音）。
      - API URL 示例：
+       - DeepSeek:   https://api.deepseek.com/chat/completions
        - OpenRouter：`https://openrouter.ai/api/v1/chat/completions`
        - Ollama：`http://127.0.0.1:11434/v1/chat/completions`
        - Gemini：`https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`
    - 注意：聊天内容会发送到你配置的 API，请留心 API Key 与隐私策略。
-### 安装 BepInEx 前置
-
-1. 在 Steam 中右键游戏 -> 管理 -> 浏览本地文件，进入游戏根目录。
-2. 安装适用于该游戏的 BepInEx。
-3. 运行一次游戏，确认生成了 `BepInEx` 目录以及其中的 `config`、`plugins` 等目录。
-
-> 如果没有生成 `BepInEx/plugins`，说明 BepInEx 尚未正确加载。请先解决前置问题，再继续安装 Mod。
-
-### 安装 Mod
-
-1. 构建或获取 `AIChat.dll`。
-2. 将 `AIChat.dll` 放入游戏目录下：
-
-   ```text
-   BepInEx/plugins/AIChat.dll
-   ```
-
-3. 启动游戏。
-4. 按 `F9` 或 `F10` 打开 AIChat 界面；也可以点击右侧生成的 AIChat 图标。
-5. 展开 `API 配置 (DeepSeek)`，填写：
-   - `API URL`
-   - `API Key`
-   - `模型名称`
-6. 点击 `保存设置`。
-
-API URL 示例：
-
-```text
-DeepSeek:   https://api.deepseek.com/chat/completions
-OpenRouter: https://openrouter.ai/api/v1/chat/completions
-Ollama:     http://127.0.0.1:11434/v1/chat/completions
-Gemini:     https://generativelanguage.googleapis.com/v1beta/openai/chat/completions
-```
-
-注意：聊天内容会发送到你配置的 API 服务。请留心 API Key、聊天内容和所用服务的隐私策略。
 
 ## 使用与设置
 
