@@ -1,8 +1,10 @@
 # Chill AI Chat Mod
 
 **为《Chill with You: Lo-Fi Story》添加基于 LLM 的 AI 文字陪伴对话（BepInEx 插件），让 Satone 支持长期记忆、主动搭话、现实时间上下文与熟悉度变化。**
-本项目基于 GitHub 开源项目 qzrs777/AIChat 进行深度重构与二次开发。
-特别感谢原作者为《Chill with You Lo-Fi Story》提供的 BepInEx 插件基础框架以及灵感。本版本移除了原有的 TTS/ASR 语音与本地模型复杂依赖，专注于“纯文本交互、沉浸式 UI、极简单文件架构、内存级 RAG 记忆检索与主动搭话”等特性的深度打磨。
+
+本项目基于 GitHub 开源项目[ qzrs777/AIChat ](https://github.com/qzrs777/AIChat)进行重构与二次开发。
+本版本移除了原有的 TTS/ASR 语音与本地模型复杂依赖，专注于“纯文本交互、沉浸式 UI、极简单文件架构、内存级 RAG 记忆检索与主动搭话”等特性的深度打磨。
+
 ## 特色
 
 - 使用兼容 OpenAI Chat Completions 格式的 LLM API 生成对话文本。
