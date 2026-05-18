@@ -4,6 +4,7 @@
 本项目基于 GitHub 开源项目[ qzrs777/AIChat ](https://github.com/qzrs777/AIChat)，移除了原有的 TTS/ASR 语音与本地模型复杂依赖，专注于纯文本交互。
 特别感谢原作者为《Chill with You Lo-Fi Story》提供的 BepInEx 插件基础框架以及灵感。
 
+
 ## 特色
 - 使用兼容 OpenAI Chat Completions 格式的 LLM API 生成对话文本。
 - 支持 DeepSeek、OpenRouter、Ollama、Gemini OpenAI 兼容接口等服务。
@@ -17,23 +18,19 @@
 - 支持熟悉度系统：不显示数值，只影响称呼、语气、主动频率和亲近程度。
 - Unity 桥接层带安全检查，便于后续扩展角色动作、视线与表情联动。
 
+
 ## 安装说明
 ### 安装 Mod 本体
 1. 下载 Mod
-- 从 [Releases](https://github.com/qzrs777/AIChat/releases) 下载 `AIChatMod.zip` 并解压。
- - 推荐使用带版本号的[最新稳定版](https://github.com/qzrs777/AIChat/releases/latest)；[![Build Status](https://github.com/qzrs777/AIChat/actions/workflows/build-stable.yml/badge.svg)](https://github.com/qzrs777/AIChat/actions/workflows/build-stable.yml)
- - 或者使用由 GitHub Actions 在线构建的[最新预览版](https://github.com/qzrs777/AIChat/releases/tag/preview)。[![Build Status](https://github.com/qzrs777/AIChat/actions/workflows/build-preview.yml/badge.svg)](https://github.com/qzrs777/AIChat/actions/workflows/build-preview.yml)
- - 预览版比稳定版更新，相对来说有 bug 的概率会更高一些，而实际结果也可能反过来。
-
-2. 安装 BepInEx 前置
+- 下载 `Chat_Mod-main.zip` 并解压。
+2. 安装 BepInEx 前置 (本项目是在windows上实现的)
 - 在 Steam 右键游戏 -> 管理 -> 浏览本地文件（或直接定位游戏根目录）。
 - 将压缩包内的 `BepInEx_*` 下的内容复制到游戏根目录。
-  - Linux 用户请注意：Mod 能被加载的原理是，Windows 中的一些程序在启动时，同目录下的 DLL 文件（这里的是 `winhttp.dll`）比原本的 DLL 文件具有更高的优先级，从而被加载；但是在 Linux 下，Proton 自己的 DLL 文件具有更高的优先级，会无视同目录下的 `winhttp.dll`。所以，你需要在 Steam 的此游戏的设置里，将启动选项填写为 `WINEDLLOVERRIDES="winhttp=n,b" %command%` （其中 `winhttp` 就是 `winhttp.dll` 的文件名）。
 - 运行一次游戏。
   - 这一步用于生成插件目录结构，包括 `BepInEx` 目录下的 `config`、`core`、`patchers`、`plugins` 等目录。
 3. 安装 Mod
 - **请务必确保上一步已生成目录结构。否则，说明 BepInEx 前置未正确加载（在解决此问题之前，继续下一步是无意义的）。**
-- 将 `AIChat.dll` 放入 `BepInEx` 下的 `plugins` 目录中。
+- 将 `AIChat.dll` 放入 `BepInEx/plugins` 目录中。
 - 打开游戏，按 F9 键或 F10 键调出 Mod 的界面。
 - 在 LLM 配置中，填写 API URL 与 API Key 以及模型名称并保存，此时就可以在的文本框里进行对话了。
   - API URL 示例：
@@ -43,8 +40,8 @@
     - Gemini：`https://generativelanguage.googleapis.com/v1beta/openai/chat/completions`
 - 注意：聊天内容会发送到你配置的 API，请留心 API Key 与隐私策略。
 
-## 使用与设置
 
+## 使用与设置
 ### 游戏内界面
 - 打开/关闭控制台（Mod 界面）：按 F9 或 F10（切换），或点击右边 AI 字样的按钮。
 - 拖拽右下角调整窗口大小；放开鼠标会把新尺寸保存到配置。
@@ -70,10 +67,9 @@
 
 ### 人设及上下文
 在 `人设及上下文` 中可以设置：
-- `启用增强互动人设`
+- `启用增强互动人设` 影响的是 Satone 的基础说话风格：更主动、更像朋友。（注：增强人设不会改写游戏里的 SystemPrompt 文本框，而是在每次发送请求时临时合入最终 system 提示词）
 - `接入现实时间`
-- `SystemPrompt`
-默认人设是 Satone（さとね）：一个热爱写诗、想象力丰富、温柔俏皮，并喜欢歌手许嵩的女孩。你可以直接在游戏内修改系统提示词。
+- `SystemPrompt` 默认人设是 Satone（さとね）：一个热爱写诗、想象力丰富、温柔俏皮，并喜欢歌手许嵩的女孩。你可以直接在游戏内修改系统提示词。
 
 现实时间上下文会提供：
 - 当前日期与时间
@@ -94,15 +90,13 @@ ChatHistory/*.txt       可读聊天日志
 ```
 
 说明：
-- `ChatHistory/*.txt` 主要用于人类查看。
+- `ChatHistory/*.txt` 主要用于你自己查看。
 - `Memory.jsonl` 是长期记忆召回的主要来源。
 - 如果想让 AI 不再记得某句话，优先修改 `Memory.jsonl`。
    - Memory.jsonl` 中每一行是一条记忆，类似：```json{"Id":"...","Timestamp":"2026-05-18 21:10:00","Role":"User","Content":"某句话","Tags":"","Importance":2,"Enabled":true,"Pinned":false}```
-- 修改后可在游戏内点击 `重载长期历史缓存`，或者重启游戏。
-
-
-可以删除整行，或者把：```json"Enabled":true```，改成：```json"Enabled":false```。
-
+   - 可以删除整行，或者把：```json"Enabled":true```，改成：```json"Enabled":false```。
+   -  修改后可在游戏内点击 `重载长期历史缓存`，或者重启游戏。
+-  `Summary.txt` 长期摘要是把很久以前的聊天压缩成一段总结，放进 system prompt 里。清除它的作用是：让 AI 不再参考那段旧总结（原记忆仍在）。
 
 ### 熟悉度系统
 熟悉度系统默认开启，但不会在对话里显示具体分数。它只影响：
@@ -112,6 +106,7 @@ ChatHistory/*.txt       可读聊天日志
 - 主动搭话频率
 
 关系阶段包括：```初识 -> 熟悉 -> 亲近 -> 信任```，你可以在游戏内填写 `称呼偏好`，让 Satone 更自然地称呼你。
+
 
 ## 构建
 ### 本地构建
