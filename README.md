@@ -108,12 +108,12 @@ ChatHistory/*.txt       可读聊天日志
 关系阶段包括：```初识 -> 熟悉 -> 亲近 -> 信任```，你可以在游戏内填写 `称呼偏好`，让 Satone 更自然地称呼你。
 
 
-## 构建
-### 本地构建
-需要：
+## 本地编译
+环境：
+- Windows
 - .NET SDK
-- 游戏本体中的 Unity 依赖
-- BepInEx core 依赖
+- .NET Framework 4.7.2 Developer Pack
+- BepInEx 已安装到游戏目录
 
 项目文件中默认依赖路径为：
 ```xml
@@ -122,8 +122,14 @@ ChatHistory/*.txt       可读聊天日志
 ```
 如果你的游戏安装位置不同，请先修改 [AIChat.csproj](AIChat/AIChat.csproj) 中的路径。
 
-构建 Release：```dotnet build .\AIChat.sln -c Release```。
-构建产物：```AIChat/bin/Release/net472/AIChat.dll```，将该 DLL 复制到：游戏目录```/BepInEx/plugins/```。
+编译方式：
+- 进入项目的根目录（即 AIChat.sln 文件所在的文件夹），打开命令行（按住`Shift`键，同时在文件夹空白处鼠标右键，选择在此处打开 PowerShell 窗口）。
+- 在终端中输入以下命令并回车：```dotnet build -c Release```。
+- 查看编译结果：命令行会输出编译过程。如果最后显示绿色的`已成功生成`或`Build succeeded`，并显示 0 个警告，0 个错误，这就说明编译成功了。
+- 提取并部署 DLL：
+  - 编译成功后，根据你 .csproj 里的配置，输出文件会自动保存在 ```AIChat-main\AIChat\bin\Release\net472```，在这个文件夹里找到 AIChat.dll。
+  - 把这个 AIChat.dll 复制到游戏的 BepInEx\plugins\ 文件夹下。
+  - 启动游戏即可生效。
 
 
 ## 问题排查
