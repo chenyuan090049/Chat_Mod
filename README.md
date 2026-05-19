@@ -1,4 +1,4 @@
-# Chill_Mod
+# Chat_Mod
 
 **为《Chill with You: Lo-Fi Story》添加基于 LLM 的 AI 文字陪伴对话，让 Satone 支持长期记忆、主动搭话、现实时间上下文与熟悉度变化。**
 
